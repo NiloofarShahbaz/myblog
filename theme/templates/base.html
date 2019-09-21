@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n staticfiles %}
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <title>
+        {% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}
+    </title>
+    <link rel="shortcut icon" href="{% static "images/favicon.png" %}">
+
+    {% ifinstalled mezzanine.blog %}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+    {% endifinstalled %}
+
+    {% compress css %}
+        <link rel="stylesheet" href="{% static "bower_components/bootstrap-4.3.1-dist/css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+        <link rel="stylesheet" href="{% static "css/base.css" %}">
+        <link rel="stylesheet" href="{% static "bower_components/fontawesome-free-5.10.1/css/all.min.css" %}">
+        {#<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">#}
+        {#{% if LANGUAGE_BIDI %}#}
+        {#<link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">#}
+        {#{% endif %}#}
+        {#{% ifinstalled cartridge.shop %}#}
+        {#<link rel="stylesheet" href="{% static "css/cartridge.css" %}">#}
+        {#{% if LANGUAGE_BIDI %}#}
+        {#<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">#}
+        {#{% endif %}#}
+        {#{% endifinstalled %}#}
+        {% block extra_css %}{% endblock %}
+    {% endcompress %}
+
+    {% compress js %}
+        {#        <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>#}
+        <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
+        <script src="{% static "bower_components/bootstrap-4.3.1-dist/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/base.js" %}"></script>
+
+        {#<script src="{% static "js/bootstrap-extras.js" %}"></script>#}
+        {% block extra_js %}{% endblock %}
+    {% endcompress %}
+
+    <!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body class="pt-3" id="{% block body_id %}body{% endblock %}">
+
+<nav class="navbar navbar-expand-lg navbar-light p-0" role="navigation">
+    <div class="container p-sm-0 px-4">
+        <div class="d-flex flex-column">
+            <a class="navbar-brand pb-0" href="/"><h1 class="site-header">{{ settings.SITE_TITLE }}</h1></a>
+            <p class="tag-line">{{ settings.SITE_TAGLINE }}</p>
+        </div>
+        <button class="navbar-toggler mb-auto" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse mb-lg-auto mb-2 mt-2" id="navbarToggler">
+            <form class="form-inline ml-auto">
+                {% block navbar_search_form %}{% search_form %}{% endblock %}
+            </form>
+        </div>
+
+    </div>
+</nav>
+
+<div class="divider div-transparent d-flex justify-content-center pb-3 pt-2"></div>
+
+<div class="container p-sm-0 px-4">
+    {% nevercache %}
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endnevercache %}
+
+</div>
+
+<div class="container mt-md-4 p-sm-0 px-4">
+    <div class="row">
+        <div class="col-lg-2 ml-lg-0 ml-3 mb-4 p-0 mr-4 order-lg-first order-last">
+            {% nevercache %}
+                {% include "includes/language_selector.html" %}
+                {% include "includes/user_panel.html" %}
+            {% endnevercache %}
+
+            <div class="card card-body p-0 bg-light right-panel">
+                {% block right_panel %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <h1 class="title mb-xl-5 mb-lg-4">{% block title %}{% endblock %}</h1>
+            {% block main %}{% endblock %}
+        </div>
+
+        <div class="divider div-transparent d-flex justify-content-center pb-3 pt-2"></div>
+
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <p class="site-info text-center pl-4">
+                {% trans "Powered by" %}
+                <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
+                <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
+            </p>
+        </div>
+    </div>
+</footer>
+
+{% block footer_js %}
+    {% include "includes/footer_scripts.html" %}
+{% endblock %}
+
+</body>
+</html>

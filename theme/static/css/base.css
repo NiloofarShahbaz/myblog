@@ -1,0 +1,264 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("/static/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("/static/fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/static/fonts/Montserrat/Montserrat-Medium.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url("/static/fonts/Montserrat/Montserrat-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto-Thin";
+    src: url("/static/fonts/Roboto/Roboto-Thin.ttf") format("truetype");
+}
+
+body {
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: "Roboto";
+    color: #4d4d4d;
+
+}
+
+h4, h5, h6, p {
+    font-family: "Roboto";
+    color: #666666;
+}
+
+p {
+    font-size: 19px;
+    color: black;
+}
+
+a {
+    font-family: "Roboto";
+    color: #2bb673;
+}
+
+a:hover {
+    color: #12cdcf;
+    text-decoration: none;
+}
+
+.site-header {
+    font-family: "Montserrat-Bold" !important;
+    line-height: 0.9;
+    background: linear-gradient(to right, #2096ff 0%, #05ffa3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tag-line {
+    font-family: "Montserrat-Light";
+    color: #4d4d4d;
+    line-height: 0.8;
+}
+
+.btn-sm {
+    line-height: 1.0;
+}
+
+footer {
+    background-color: #404040;
+    color: white;
+}
+
+footer p {
+    color: white;
+}
+
+footer a {
+    color: #05ffa3;
+}
+
+footer a:hover {
+    color: #2096ff;
+    text-decoration: none;
+}
+
+.title {
+    font-family: "Roboto";
+}
+
+.card {
+    border-radius: 0;
+    border-image: linear-gradient(to bottom, #05ffa3, #2096ff) 1 100%;
+    border-width: 0;
+    border-right-width: 1px;
+    background-color: white !important;
+}
+
+@media (max-width: 991px) {
+    .card {
+        border-right-width: 0;
+    }
+}
+
+.divider {
+    position: relative;
+    height: 1px;
+}
+
+.div-transparent:before {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 90%;
+    background-image: linear-gradient(to right, #05ffa3, #2096ff, #05ffa3);
+}
+
+@media (max-width: 991px) {
+    .card {
+        border-right-width: 0;
+    }
+
+    .row .divider {
+        width: 150% !important;
+    }
+}
+
+@media (min-width: 1660px) {
+    .div-transparent:before {
+        width: 70%;
+    }
+}
+
+.btn {
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 4px 6px 0 rgba(49, 196, 190, 0.75);
+    display: block;
+    border: 0;
+}
+
+.btn-primary {
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+}
+
+.btn-primary:hover {
+    background-position: right center;
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.7rem !important;
+    }
+
+    p {
+        font-size: 17px !important;
+    }
+
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.6rem !important;
+    }
+
+    h2 {
+        font-size: 1.3rem !important;
+    }
+
+    p {
+        font-size: 14px !important;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .col-lg-2 {
+    max-width: 15.333333%;
+    flex: 0 0 15.333333%;
+}
+}
+
+
+.right-panel a {
+    font-size: 15px !important;
+}
+
+.right-panel span {
+    font-size: 15px !important;
+    color: #4d4d4d;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #8c8c8c !important;
+    font-family: "Roboto-Thin";
+    letter-spacing: -0.059em;
+}
+
+.blog-list-detail {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.post-title {
+    color: #595959;
+    transition: 0.7s;
+}
+
+.share-btn-twitter {
+    font-size: 1.7em;
+    color: #595959;
+    transition: 0.7s;
+}
+
+.share-btn-twitter:hover {
+    color: #1da1f2;
+}
+
+.share-btn-facebook {
+    font-size: 1.7em;
+    color: #595959;
+    transition: 0.7s;
+}
+
+.share-btn-facebook:hover {
+    color: #4267b2;
+
+}
+
+.share-btn-linkedin {
+    font-size: 1.7em;
+    color: #595959;
+    transition: 0.7s;
+}
+
+.share-btn-linkedin:hover {
+    color: #0077b5;
+
+}
+
+.editable-original {
+    justify-content: center !important;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
