@@ -21,31 +21,34 @@
         {% editable blog_post.publish_date %}
             <p class="post-meta d-flex flex-wrap">
                 <span class="pr-3">
-                    <i class="far fa-calendar-alt pr-1" style="font-size: 16px;color: #8c8c8c;"></i>
-                    {{ blog_post.publish_date| date }}</span>
+                    <i class="far fa-calendar-alt" style="font-size: 14px;color: #8c8c8c;letter-spacing: 0.135em;"></i>
+                    {{ blog_post.publish_date| date }}
+                </span>
                 <span class="pr-3">
-                    <i class="far fa-clock pr-1" style="font-size: 16px;color: #8c8c8c;"></i>
-                    {{ blog_post.content|read_time }}</span>
-                {% if blog_post.allow_comments %}
-                    {% if settings.COMMENTS_DISQUS_SHORTNAME %}
-                        <span>
-                            <i class="fas fa-comments pr-1" style="font-size: 16px;color: #8c8c8c;"></i>
-                            <a class="post-meta pr-3" href="{{ blog_post.get_absolute_url }}#disqus_thread"
-                               data-disqus-identifier="{% disqus_id_for blog_post %}">
-                                {% trans "comments" %}
+                    <i class="far fa-clock" style="font-size: 14px;color: #8c8c8c;"></i>
+                    {{ blog_post.content| read_time }}
+                </span>
+                <span>
+                    {% if blog_post.allow_comments %}
+                        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                                <i class="fas fa-comments" style="font-size: 14px;color: #8c8c8c;letter-spacing: 0.135em;"></i>
+                                <a class="post-meta pr-3" href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                                   data-disqus-identifier="{% disqus_id_for blog_post %}">
+                                    {% trans "comments" %}
+                                </a>
+                        {% else %}
+                            <i class="fas fa-comments" style="font-size: 14px;color: #8c8c8c;letter-spacing: 0.135em;line-height: 1;"></i>
+                            <a class="post-meta pr-3" href="{{ blog_post.get_absolute_url }}#comments">
+                                {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }}
+                                    comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
                             </a>
-                        </span>
-                    {% else %}
-                        <a href="{{ blog_post.get_absolute_url }}#comments">
-                            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }}
-                                comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
-                        </a>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                </span>
                 {% with blog_post.categories.all as categories %}
                     {% if categories %}
                         <span>
-                        <i class="fas fa-folder-open pr-1" style="font-size: 16px;color: #8c8c8c;"></i>
+                        <i class="fas fa-folder-open" style="font-size: 14px;color: #8c8c8c;letter-spacing: 0.135em;"></i>
                         {% for category in categories %}
                             <a class="post-meta"
                                href="{% url "blog_post_list_category" category.slug %}">{{ category }}</a>
@@ -54,7 +57,6 @@
                         </span>
                     {% endif %}
                 {% endwith %}
-
             </p>
         {% endeditable %}
     {% endblock %}

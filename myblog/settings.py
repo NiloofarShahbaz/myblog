@@ -19,12 +19,12 @@ from django.utils.translation import ugettext_lazy as _
 
 # Controls the ordering and grouping of the admin menu.
 #
-# ADMIN_MENU_ORDER = (
-#     ("Content", ("pages.Page", "blog.BlogPost",
-#        "generic.ThreadedComment", (_("Media Library"), "media-library"),)),
-#     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
-#     ("Users", ("auth.User", "auth.Group",)),
-# )
+ADMIN_MENU_ORDER = (
+    ("Content", ("pages.Page", "blog.BlogPost", "blog.BlogCategory",
+       "generic.ThreadedComment", (_("Media Library"), "media-library"),)),
+    ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
+    ("Users", ("auth.User", "auth.Group",)),
+)
 
 # A three item sequence, each containing a sequence of template tags
 # used to render the admin dashboard.
@@ -79,7 +79,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
-# BLOG_USE_FEATURED_IMAGE = True
+BLOG_USE_FEATURED_IMAGE = True
 
 # If True, the django-modeltranslation will be added to the
 # INSTALLED_APPS setting.
@@ -124,8 +124,6 @@ DEBUG = False
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 SITE_ID = 1
-SITE_TITLE = "Niloofar Shahbaz"
-SITE_TAGLINE = "blogger"
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
 USE_I18N = False

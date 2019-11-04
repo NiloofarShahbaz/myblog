@@ -205,10 +205,9 @@ footer a:hover {
 }
 
 .post-meta {
-    font-size: 14px;
+    font-size: 0.85rem !important;
     color: #8c8c8c !important;
     font-family: "Roboto-Thin";
-    letter-spacing: -0.059em;
 }
 
 .blog-list-detail {
@@ -261,4 +260,8 @@ footer a:hover {
 img {
     width: 100%;
     object-fit: cover;
+}
+
+.featured-img {
+    max-height: 200px;
 }
